@@ -12,7 +12,6 @@ Este proyecto consiste en una suite de **pruebas automatizadas E2E (End-to-End)*
 ## 📌 Características del Proyecto
 
 - 🏗️ **Patrón Page Object Model (POM):** Separación clara entre los elementos de la interfaz web y la lógica de las pruebas.
-- 🇪🇸 **100% en Español:** Tanto el sistema base como las validaciones, reportes y aserciones están configuradas totalmente en español.
 - 🎯 **Cobertura Completa de Pruebas:**
   - 🟢 **Camino Feliz (Happy Path):** Escenarios exitosos de negocio.
   - 🔴 **Pruebas Negativas:** Manejo de errores y validación de credenciales/datos incorrectos.
