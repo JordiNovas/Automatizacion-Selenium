@@ -1,0 +1,15 @@
+# Entorno virtual (no subir a GitHub)
+venv/
+ENV/
+env/
+
+# Archivos compilados y cachés de Python
+__pycache__/
+*.pyc
+
+# Archivos de configuración de PyTest y caché
+.pytest_cache/
+
+# Opcional: si prefieres que las capturas y reportes se generen limpios al ejecutar
+# screenshots/
+# reports/
