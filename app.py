@@ -60,10 +60,13 @@ HTML_INVENTARIO = """
         th, td { border: 1px solid #ddd; padding: 12px; text-align: left; }
         th { background: #007bff; color: white; }
         .form-container { background: white; padding: 20px; border-radius: 8px; margin-bottom: 20px; }
+        .search-container { background: white; padding: 15px; border-radius: 8px; margin-bottom: 20px; }
+        .search-input { width: 100%; padding: 10px; box-sizing: border-box; font-size: 14px; }
         .btn { padding: 8px 12px; color: white; border: none; border-radius: 4px; cursor: pointer; text-decoration: none; }
         .btn-crear { background: #28a745; }
         .btn-eliminar { background: #dc3545; }
         .alert { color: red; font-weight: bold; }
+        .alert-warning { background: #fff3cd; color: #856404; padding: 10px; border-radius: 4px; display: none; margin-top: 10px; }
     </style>
 </head>
 <body>
@@ -82,6 +85,13 @@ HTML_INVENTARIO = """
             <input type="number" step="0.01" id="precio" name="precio" placeholder="Precio ($)">
             <button type="submit" id="btn-guardar" class="btn btn-crear">Guardar Producto</button>
         </form>
+    </div>
+
+    <!-- SECCIÓN DE BÚSQUEDA AÑADIDA -->
+    <div class="search-container">
+        <h3>Buscar Producto</h3>
+        <input type="text" id="buscar-producto" class="search-input" placeholder="Escriba el nombre o categoría del producto..." onkeyup="filtrarProductos()">
+        <div id="mensaje-no-resultados" class="alert-warning">No se encontraron productos que coincidan.</div>
     </div>
 
     <table>
@@ -108,6 +118,32 @@ HTML_INVENTARIO = """
             {% endfor %}
         </tbody>
     </table>
+
+    <!-- SCRIPT DE FILTRADO PARA LA HU06 -->
+    <script>
+        function filtrarProductos() {
+            let input = document.getElementById('buscar-producto').value.toLowerCase();
+            let filas = document.querySelectorAll('#tabla-productos tr');
+            let coincidencias = 0;
+
+            filas.forEach(function(fila) {
+                let textoFila = fila.textContent.toLowerCase();
+                if (textoFila.includes(input)) {
+                    fila.style.display = '';
+                    coincidencias++;
+                } else {
+                    fila.style.display = 'none';
+                }
+            });
+
+            let mensaje = document.getElementById('mensaje-no-resultados');
+            if (coincidencias === 0 && filas.length > 0) {
+                mensaje.style.display = 'block';
+            } else {
+                mensaje.style.display = 'none';
+            }
+        }
+    </script>
 </body>
 </html>
 """
